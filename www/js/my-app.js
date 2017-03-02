@@ -7,7 +7,7 @@ var $$ = Dom7;
 
 // Add view
 var mainView = myApp.addView('.view-main', {
-  
+
 });
 
 // Handle Cordova Device Ready Event
@@ -35,8 +35,27 @@ $$(document).on('pageInit', function (e) {
     }
 })
 
+
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
     myApp.alert('Here comes About page');
+})
+
+$$("#loginbutton").click(function(){
+  //alert("clicked login");
+  //https://www.facebook.com/v2.8/dialog/oauth?client_id=680848835421990&redirect_uri="http://192.168.43.117:3000/home.html"
+  //window.open('https://www.facebook.com/v2.8/dialog/oauth?client_id=680848835421990&redirect_uri=http://192.168.43.117:3000/home.html',"_self");
+
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+    //alert("Already logged in");
+  }
+  else {
+    //alert("calling");
+    FB.login();
+  //  alert("called fb login");
+  }
+});
 })
