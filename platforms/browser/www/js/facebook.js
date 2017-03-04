@@ -26,7 +26,6 @@ window.fbAsyncInit = function() {
             console.log(response.website);
             console.log(response.work);
             localStorage.setItem("user", response.name);
-            document.cookie = response.name;
             window.open("./home.html","_self");
 
           }

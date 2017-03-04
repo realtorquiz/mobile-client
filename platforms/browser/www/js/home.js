@@ -24,3 +24,14 @@ $$(document).on('pageInit', function (e) {
  $$("#userName").text(document.cookie);
 //  document.getElementById("#userName").innerHTML = localStorage.getItem('user');
 })
+
+$$('.exam-mode').on('click',function () {
+  localStorage.setItem("examMode", true);
+  window.open("./exam2.html","_self");
+});
+
+$$('.practice-mode').on('click',function () {
+  localStorage.setItem("examMode", false);
+  window.open("./exam2.html","_self");
+
+});
