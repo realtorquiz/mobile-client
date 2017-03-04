@@ -18,10 +18,20 @@ var optionSelected = false;
 var answerSelected = "";
 var correctAnswers = 0;
 var wrongAnswers = 0;
+var examMode = false;
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
+  examMode = localStorage.getItem("examMode");
+  console.log("Exam mode "+examMode);
+  if(examMode=="true"){
+    $$("#exam-mode").text("Exam");
+    $$('.showanswer').text("");
+  } else {
+    $$("#exam-mode").text("Practice");
+    $$('.showanswer').text("Show Answer");
 
+  }
   quiz = new Quiz();
   quiz.createQuiz();
   questions = quiz.getQuestions();
@@ -84,7 +94,25 @@ function loadQuestion(question) {
   }
 }
 
+
+$$('.showanswer').on('click',function() {
+  console.log("Show Answer");
+  var currentAnswer = currentQuestion.answer;
+  console.log("currentAnswer ="+currentAnswer);
+  if(currentAnswer==currentQuestion.option1) {
+    console.log("option1 is the currentAnswer");
+    $$( "#option1" ).trigger( "click" );
+  } else if(currentAnswer==currentQuestion.option2) {
+      $$( "#option2" ).trigger( "click" );
+  }else if(currentAnswer==currentQuestion.option3) {
+      $$( "#option3" ).trigger( "click" );
+  }else if(currentAnswer==currentQuestion.option4) {
+      $$( "#option4" ).trigger( "click" );
+  }
+});
+
 $$('#option1').on('click', function () {
+  console.log("Selected option 1");
   addGreenColor(this);
   var option2 = document.querySelector('#option2');
   var option3 = document.querySelector('#option3');
