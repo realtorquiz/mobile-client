@@ -156,7 +156,7 @@ $$('.next').on('click',function() {
 
       console.log("All Answers submitted");
       findTotalMarks();
-        window.open("./result3.html","_self");
+      window.open("./result.html","_self");
 
     });
 
@@ -196,5 +196,6 @@ function findTotalMarks() {
   var user = new User();
   user.setCorrectAnswers(correctAnswers);
   user.setWrongAnswers(wrongAnswers);
-  localStorage.setItem("result", user);
+  localStorage.setItem("correctAnswers", correctAnswers);
+  localStorage.setItem("wrongAnswers", wrongAnswers);
 }

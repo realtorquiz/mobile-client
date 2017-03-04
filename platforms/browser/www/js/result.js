@@ -14,8 +14,18 @@ var user;
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
    $$("#userName").text( localStorage.getItem('user'));
-    user = localStorage.getItem("result", user);
-    console.log("Result :: "+JSON.stringify(user));
+    var correctAnswers =localStorage.getItem("correctAnswers");
+    var wrongAnswers =localStorage.getItem("wrongAnswers");
+    var totalQuestions = Math.floor(correctAnswers + wrongAnswers);
+    var marks = correctAnswers + "/" + totalQuestions;
+    var percentage = Math.floor((correctAnswers/totalQuestions)*1000);
+    console.log("correctAnswers ::: "+correctAnswers)
+    console.log("wrongAnswers ::: "+wrongAnswers)
+    $$('#correctAnswers').text(""+correctAnswers);
+    $$('#wrongAnswers').text(""+wrongAnswers);
+    $$('#totalQuestions').text(""+totalQuestions);
+    $$('#totalMarks').text(""+marks);
+    $$('#percentage').text(""+percentage+"%");
 
 });
 
@@ -23,3 +33,7 @@ $$(document).on('deviceready', function() {
 $$(document).on('pageInit', function (e) {
 
 })
+
+$$('.go-to-home').on('click',function() {
+      window.open("./home.html","_self");
+});
