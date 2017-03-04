@@ -27,6 +27,7 @@ $$(document).on('deviceready', function() {
   if(examMode=="true"){
     $$("#exam-mode").text("Exam");
     $$('.showanswer').text("");
+    startTimer();
   } else {
     $$("#exam-mode").text("Practice");
     $$('.showanswer').text("Show Answer");
@@ -227,3 +228,37 @@ function findTotalMarks() {
   localStorage.setItem("correctAnswers", correctAnswers);
   localStorage.setItem("wrongAnswers", wrongAnswers);
 }
+
+//Timer
+
+var countDownDate;
+var minutes;
+var seconds;
+
+function startTimer() {
+  countDownDate = new Date().getTime() + 10*1000;
+
+   var x = setInterval(function() {
+      console.log("Timer running");
+       // Get todays date and time
+       var now = new Date().getTime();
+       var progress =  Math.floor(((countDownDate - now) / countDownDate)*100);
+        var progressbar = $$('.demo-progressbar-inline .progressbar');
+        myApp.setProgressbar(progressbar, progress);
+       // Find the distance between now an the count down date
+       var distance = countDownDate - now;
+
+       // Time calculations for days, hours, minutes and seconds
+
+       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+       // If the count down is over, write some text
+       if (distance < 0) {
+           clearInterval(x);
+          console.log("Timer expired");
+       }
+   }, 1000);
+
+}
+// Update the count down every 1 second
