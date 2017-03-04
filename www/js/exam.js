@@ -156,7 +156,7 @@ $$('.next').on('click',function() {
 
       console.log("All Answers submitted");
       findTotalMarks();
-        window.open("./result.html","_self");
+        window.open("./result3.html","_self");
 
     });
 

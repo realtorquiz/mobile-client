@@ -20,8 +20,8 @@ $$(document).on('deviceready', function() {
 
 // Option 2. Using one 'pageInit' event handler for all pages:
 $$(document).on('pageInit', function (e) {
-  alert('home loaded');
- $$("#userName").text(document.cookie);
+
+ //$$("#userName").text(document.cookie);
 //  document.getElementById("#userName").innerHTML = localStorage.getItem('user');
 })
 
