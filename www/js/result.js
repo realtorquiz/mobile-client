@@ -16,9 +16,9 @@ $$(document).on('deviceready', function() {
    $$("#userName").text( localStorage.getItem('user'));
     var correctAnswers =localStorage.getItem("correctAnswers");
     var wrongAnswers =localStorage.getItem("wrongAnswers");
-    var totalQuestions = Math.floor(correctAnswers + wrongAnswers);
+    var totalQuestions = Math.ceil(+correctAnswers + +wrongAnswers);
     var marks = correctAnswers + "/" + totalQuestions;
-    var percentage = Math.floor((correctAnswers/totalQuestions)*1000);
+    var percentage = Math.floor((+correctAnswers/+totalQuestions)*100);
     console.log("correctAnswers ::: "+correctAnswers)
     console.log("wrongAnswers ::: "+wrongAnswers)
     $$('#correctAnswers').text(""+correctAnswers);

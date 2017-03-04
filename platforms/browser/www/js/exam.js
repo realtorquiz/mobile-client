@@ -36,6 +36,9 @@ $$(document).on('deviceready', function() {
   quiz = new Quiz();
   quiz.createQuiz();
   questions = quiz.getQuestions();
+  for(i=0;i<questions.length;i++) {
+    quiz.mark[i] = 0;
+  }
   console.log("Questions :: "+JSON.stringify(questions));
   currentQuestion = questions[currentQuestionIndex];
   loadQuestion(currentQuestion);
@@ -185,6 +188,7 @@ $$('.next').on('click',function() {
 
       console.log("All Answers submitted");
       findTotalMarks();
+      localStorage.setItem("timeup", false);
       window.open("./result.html","_self");
 
     });
@@ -236,14 +240,20 @@ var minutes;
 var seconds;
 
 function startTimer() {
-  countDownDate = new Date().getTime() + 10*1000;
+  countDownDate = new Date().getTime() + 20*1000;
 
    var x = setInterval(function() {
       console.log("Timer running");
        // Get todays date and time
        var now = new Date().getTime();
-       var progress =  Math.floor(((countDownDate - now) / countDownDate)*100);
-        var progressbar = $$('.demo-progressbar-inline .progressbar');
+       console.log("countDownDate ::: "+countDownDate);
+       console.log("now :::"+now);
+       var timeDifference = Math.floor(countDownDate - now);
+       console.log("Time difference ::: "+timeDifference);
+       var progress =  Math.floor(200-((countDownDate - now)/(100)));
+       progress = progress/2;
+       console.log("progress ::: "+progress);
+        var progressbar = $$('.progressbar');
         myApp.setProgressbar(progressbar, progress);
        // Find the distance between now an the count down date
        var distance = countDownDate - now;
@@ -253,10 +263,14 @@ function startTimer() {
        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+       $$('.showanswer').text(""+minutes+":"+seconds);
        // If the count down is over, write some text
        if (distance < 0) {
            clearInterval(x);
           console.log("Timer expired");
+          findTotalMarks();
+          localStorage.setItem("timeup", true);
+          window.open("./result.html","_self");
        }
    }, 1000);
 
