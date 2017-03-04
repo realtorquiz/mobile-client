@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body class="layout-dark">
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
     <div class="statusbar-overlay"></div>
 <!--
@@ -73,7 +73,23 @@
                         <div class="content-block">
                             <p></p>
                             <!-- Link to another page -->
-                            <h3>Logged in as <span id='userName'></span></h3>
+                            <div class="content-block-title">Welcome <span id='userName'></span></div>
+                            <br>
+                            <div class="card">
+                              <div class="card-header">EXAM MODE </div>
+                              <div class="card-content">
+                                <div class="card-content-inner">In exam mode you can try te exam in a simulation mode to get a feel of how the exam is going to be.  This mode will be timed so you need to complete it in 1 hour</div>
+                              </div>
+                              <div class="card-footer">CLICK TO ENTER EXAM MODE</div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div class="card-header">PRATICE MODE </div>
+                              <div class="card-content">
+                                <div class="card-content-inner">In Practice mode you can try out the exam questions and there is no time limit on this practice mode. Also you will be able to get the answer to the questions right away. </div>
+                              </div>
+                              <div class="card-footer">CLICK TO ENTER PRACTICE MODE</div>
+                            </div>
                         </div>
                     </div>
                 </div>
