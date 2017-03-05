@@ -40,3 +40,8 @@ See https://github.com/apache/cordova-plugin-statusbar
   background-size: cover;
   background-position: center;
 }
+
+.circular-image {
+  position: relative;
+  margin: 30%;
+}
