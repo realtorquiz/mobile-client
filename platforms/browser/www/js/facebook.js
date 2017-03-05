@@ -35,12 +35,13 @@ window.fbAsyncInit = function() {
     else if (response.status === 'not_authorized')
     {
         console.log("Failed to Connect");
+        alert("Failed to Connect");
 
         //FAILED
     } else
     {
         console.log("Logged Out");
-
+        alert("Logged Out");
         //UNKNOWN ERROR
     }
     });

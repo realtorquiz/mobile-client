@@ -43,19 +43,22 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 })
 
 $$("#loginbutton").click(function(){
+  FB.login();
   //alert("clicked login");
   //https://www.facebook.com/v2.8/dialog/oauth?client_id=680848835421990&redirect_uri="http://192.168.43.117:3000/home.html"
   //window.open('https://www.facebook.com/v2.8/dialog/oauth?client_id=680848835421990&redirect_uri=http://192.168.43.117:3000/home.html',"_self");
 
-  FB.getLoginStatus(function(response) {
+  /*FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     console.log('Logged in.');
     //alert("Already logged in");
   }
   else {
-    //alert("calling");
-    FB.login();
-  //  alert("called fb login");
+    login();
   }
-});
+});*/
 })
+
+function login() {
+    FB.login();
+}
